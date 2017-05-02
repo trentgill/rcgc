@@ -1,5 +1,18 @@
 # RC Game Console
 
+// 1st steps:
+- get base OS running
+	- use rasPi base image
+	- how to 
+- keeping good notes of all software req'd to be installed
+	- is there an aptitude command to display everything installed & when??
+
+
+// later:
+- how does aptitude tell you which dependencies are needed
+	- reimplement a simple version for executable games which have dependencies
+- how to capture errors & return to launcher (w/ description)
+
 ////////////////////////
 ////////////////////////////////
 //////// SOFTWARE ELEMENTS /////////
@@ -7,6 +20,7 @@
 ////////////////////////////////////////
 
 rcgc selector:
+- build it inside of a game engine (love2d?)
 - access to wifi settings
 - visual display (gui / shell)
 - getting game-info from local db (from game config files)
