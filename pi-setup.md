@@ -59,16 +59,17 @@ For now, rcgc will be using the Raspbian Lite image, available at https://www.ra
       1. Change country to your country code
       2. Add the following to the end of the file, replacing "your-ssid" and "your-password" with your network name and password (but keep the double quotes!):
 
-```
+          ```
 network={
     ssid="your-ssid"
     psk="your-password"
 }
-```
+          ```
+
       3. ctrl+O to write your changes, then ctrl+X to exit to the terminal.
-      4. `sudo wpa_cli reconfigure`
-      5. You should now be connected to your wifi network. `sudo ifconfig wlan0` will show information about your wireless card. If there is an ip address after `inet`, you are connected.
-      6. If your wifi network is working right, you should also be connected to the internet. `ping 8.8.8.8` will get some responses if this is the case. (ctrl-c to stop pinging).
+   2. `sudo wpa_cli reconfigure`
+   3. You should now be connected to your wifi network. `sudo ifconfig wlan0` will show information about your wireless card. If there is an ip address after `inet`, you are connected.
+   4. If your wifi network is working right, you should also be connected to the internet. `ping 8.8.8.8` will get some responses if this is the case. (ctrl-c to stop pinging).
 8. `sudo apt-get update`
 9. `sudo apt-get upgrade`
 
