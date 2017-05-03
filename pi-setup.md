@@ -39,10 +39,10 @@ For now, rcgc will be using the Raspbian Lite image, available at https://www.ra
    Note that this command may take a while to run, and there is no progress indicator. Don't panic.
 7. `sync` to flush the write cache before removing the MicroSD card.
 8. At this point, the MicroSD card is ready to be plugged into the Raspberry Pi! The next few steps just verify that the image copied successfully. If you like living on the edge, you can skip to step 9.
-  1. `sudo dd bs=4M if=/dev/mmcblk0 of=from-sd-card.img` (replace the device name after `if=/dev/` with your MicroSD card device name).
-  2. `sudo truncate --reference 2017-04-10-raspbian-jessie-lite.img from-sd-card.img` (replace the file name after `--reference` with your (downloaded & unzipped) img file name)
-  3. `diff -s from-sd-card.img 2017-04-10-raspbian-jessie-lite.img` (again, replace the second file name with your (downloaded & unzipped) img file name). This should output `files from-sd-card.img and 2017-04-10-raspbian-jessie-lite.img are identical`.
-  4. `sync` again.
+   1. `sudo dd bs=4M if=/dev/mmcblk0 of=from-sd-card.img` (replace the device name after `if=/dev/` with your MicroSD card device name).
+   2. `sudo truncate --reference 2017-04-10-raspbian-jessie-lite.img from-sd-card.img` (replace the file name after `--reference` with your (downloaded & unzipped) img file name)
+   3. `diff -s from-sd-card.img 2017-04-10-raspbian-jessie-lite.img` (again, replace the second file name with your (downloaded & unzipped) img file name). This should output `files from-sd-card.img and 2017-04-10-raspbian-jessie-lite.img are identical`.
+   4. `sync` again.
 9. `umount /dev/mmcblk0` (replace with your MicroSD card device name).
 10. Unplug the MicroSD card.
 
@@ -55,20 +55,20 @@ For now, rcgc will be using the Raspbian Lite image, available at https://www.ra
 5. The default keyboard layout is "gb" for Great Britain, a country that isn't even called that anymore. Change it by doing `sudo dpkg-reconfigure keyboard-configuration` and following the prompts.
 6. `sudo raspi-config` will show a prompt with some other useful options. Configure your internationalization options and your network hostname, then `Expand Filesystem` and exit.
 7. Connect to your wifi network:
-  1. `sudo nano /etc/wpa_supplicant/wpa_supplicant.conf`
-    1. Change country to your country code
-    2. Add the following to the end of the file, replacing "your-ssid" and "your-password" with your network name and password (but keep the double quotes!):
-    
-       ```
-       network={
-          ssid="your-ssid"
-          psk="your-password"
-       }
-       ```
-    3. ctrl+O to write your changes, then ctrl+X to exit to the terminal.
-    4. `sudo wpa_cli reconfigure`
-    5. You should now be connected to your wifi network. `sudo ifconfig wlan0` will show information about your wireless card. If there is an ip address after `inet`, you are connected.
-    6. If your wifi network is working right, you should also be connected to the internet. `ping 8.8.8.8` will get some responses if this is the case. (ctrl-c to stop pinging).
+   1. `sudo nano /etc/wpa_supplicant/wpa_supplicant.conf`
+      1. Change country to your country code
+      2. Add the following to the end of the file, replacing "your-ssid" and "your-password" with your network name and password (but keep the double quotes!):
+
+```
+network={
+    ssid="your-ssid"
+    psk="your-password"
+}
+```
+      3. ctrl+O to write your changes, then ctrl+X to exit to the terminal.
+      4. `sudo wpa_cli reconfigure`
+      5. You should now be connected to your wifi network. `sudo ifconfig wlan0` will show information about your wireless card. If there is an ip address after `inet`, you are connected.
+      6. If your wifi network is working right, you should also be connected to the internet. `ping 8.8.8.8` will get some responses if this is the case. (ctrl-c to stop pinging).
 8. `sudo apt-get update`
 9. `sudo apt-get upgrade`
 
