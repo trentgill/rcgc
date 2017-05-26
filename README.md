@@ -137,3 +137,64 @@ wishlist:
 - dealing with run-out of storage
 - official releases linked to batch cycles
 	- pushes updates & displays what the new games are
+
+\\\\\\\\\
+
+launcher:
+	input: path to game's config file
+	output: formatted terminal command to run game
+		or ERROR (need network / gamepad / whatever! )
+
+	transformation:
+		where it is
+		which interpretter
+		interpretter options
+		will current state of system be able to run the game
+			> return error if not
+		format terminal string
+
+
+
+
+
+
+- path to executable / main script
+- which engine to run?!
+	: can this be automated?
+		'find' command
+		eg: parse 1st line of the script (for ruby / python)
+			'#!/usr/env/ruby'
+			need string replacement?
+
+what do you need to make your game compatible w rcgc:
+	- if interpreter, which one & which version
+		if your required engine not available, request new addition to main repo
+	- how to launch your game from the shell
+
+
+
+workflow:
+	- select game
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
