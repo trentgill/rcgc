@@ -1,6 +1,6 @@
 {
 	// for the launcher
-	"path": "chooser.lua",
+	"path": "main.lua",
 	"engine": "Love2D",
 	"keyboard": "required",
 	"mouse": "not supported",
