@@ -1,11 +1,17 @@
 
 
 pub struct Config {
-    path: <String>;
+    pub path: String,
 }
 
-impl config {
-    pub fn new(args: &[String] -> Result(Config, &'static str) {
-
+impl Config {
+    pub fn new(args: &[String]) -> Result<Config, &'static str> {
+        if args.len() != 2 {
+            return Err("wrong number of arguments");
+        }
+        let path = args[1].clone();
+        Ok(Config {
+            path: path,
+        })
     }
 }
