@@ -1,0 +1,18 @@
+{
+	// for the launcher
+	"path": "main.lua",
+	"engine": "Love2D",
+	"keyboard": "required",
+	"mouse": "not supported",
+	"gamepad": "not supported",
+	"network": "not supported",
+	"multiplayer": "none",
+	"singleplayer": "true",
+
+	// for the selector
+	"author": "ur name",
+	"batch": "ur batch",
+	"website": "http://github.com/jfkfjfkfj",
+	"splash": "rcgc/splash.png",
+	"screenshot": "rcgc/screenshot.png"
+}
