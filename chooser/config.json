@@ -1,5 +1,4 @@
 {
-	// for the launcher
 	"path": "main.lua",
 	"engine": "Love2D",
 	"keyboard": "required",
@@ -9,7 +8,6 @@
 	"multiplayer": "none",
 	"singleplayer": "true",
 
-	// for the selector
 	"author": "ur name",
 	"batch": "ur batch",
 	"website": "http://github.com/jfkfjfkfj",
