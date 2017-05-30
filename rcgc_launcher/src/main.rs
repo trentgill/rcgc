@@ -26,9 +26,9 @@ fn main() {
             .expect("failed to execute process");
     println!("{}", String::from_utf8_lossy(&output.stdout));
     
-    let mut file = File::open(&config.path).unwrap();
-    let mut contents = String::new();
-    file.read_to_string(&mut contents).unwrap();
-    let json = json::parse(&contents).unwrap();
+    let json = rcgc_launcher::parse_json(&config.path).unwrap_or_else( |err| {
+        println!("Problem parsing json: {}", err);
+        process::exit(1);
+    });
     println!("author: {}", json["author"]);
 }
