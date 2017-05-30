@@ -1,0 +1,6 @@
+[package]
+name = "rcgc_launcher"
+version = "0.1.0"
+authors = ["agevitam <mastersebastian@gmail.com>"]
+
+[dependencies]
