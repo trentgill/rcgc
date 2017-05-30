@@ -30,4 +30,5 @@ fn main() {
     let mut contents = String::new();
     file.read_to_string(&mut contents).unwrap();
     let json = json::parse(&contents).unwrap();
+    println!("author: {}", json["author"]);
 }
