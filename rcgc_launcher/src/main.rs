@@ -2,6 +2,8 @@ extern crate rcgc_launcher;
 extern crate json;
 
 use std::env;
+use std::fs::File;
+use std::io::prelude::*;
 use std::process;
 use std::process::Command;
 use rcgc_launcher::Config;
@@ -23,4 +25,9 @@ fn main() {
             .output()
             .expect("failed to execute process");
     println!("{}", String::from_utf8_lossy(&output.stdout));
+    
+    let mut file = File::open(&config.path).unwrap();
+    let mut contents = String::new();
+    file.read_to_string(&mut contents).unwrap();
+    let json = json::parse(&contents).unwrap();
 }
