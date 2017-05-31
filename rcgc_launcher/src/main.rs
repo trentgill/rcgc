@@ -55,4 +55,18 @@ fn main() {
         config.path,
         json["path"]
     );
+    
+    //eg: how to run a formatted shell command in a sub-terminal
+    //println!("Argument: {}", config.path);
+    let message = format!(
+        "{} {}",
+        interpreter_cmd,
+        config.path
+    );
+    let output = Command::new("sh")
+            .arg("-c")
+            .arg(message)
+            .output()
+            .expect("Unable to execute shell command");
+    println!("{}", String::from_utf8_lossy(&output.stdout));
 }
