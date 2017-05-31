@@ -21,16 +21,8 @@ fn main() {
         process::exit(1);
     });
 
-    //println!("Argument: {}", config.path);
-    let message = format!("echo {}", config.path);
-    let output = Command::new("sh")
-            .arg("-c")
-            .arg(message)
-            .output()
-            .expect("Unable to execute shell command");
-    println!("{}", String::from_utf8_lossy(&output.stdout));
-   
-    let json_path = format!("{}config.json", &config.path);
+
+    let json_path = format!("{}config.json", config.path);
     let json = rcgc_launcher::path_to_json(&json_path)
         .unwrap_or_else( |err| {
             writeln!(
