@@ -2,7 +2,7 @@ use json::Error;
 use json::parse;
 use json::JsonValue;
 
-pub fn path_to_json(contents: &String) -> Result<JsonValue, String> {
+pub fn parse_json(contents: &String) -> Result<JsonValue, String> {
     let json = parse(&contents).or_else( |err| {
         match err {
             Error::UnexpectedCharacter { ch, line, column } => {
