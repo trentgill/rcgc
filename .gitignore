@@ -43,3 +43,8 @@ DS_Store
 *.dSYM/
 *.lst
 *.s
+
+#Rust files
+target/
+*.swp
+*.rs.swp
