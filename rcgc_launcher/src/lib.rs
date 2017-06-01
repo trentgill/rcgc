@@ -34,6 +34,26 @@ pub fn path_to_json(path: &String) -> Result<JsonValue, Box<Error>> {
     Ok(json)
 }
 
+/// Unwraps a Result or exits & prints Err as formatted string to stderr
+///
+/// # Examples
+/// ```
+/// let good_result: Result<i32, str> = Ok(10);
+/// let bad_result: Result<i32, str> = Err(":(");
+///
+/// let foo = unwrap_or_stderr(
+///     good_result,
+///     "Received a bad result"
+/// );
+/// assert!(foo == 10);
+///
+/// let bar = unwrap_or_stderr(
+///     bad_result,
+///     "Received a bad result"
+/// );
+/// // Program will exit due to failure to unwrap
+/// // and print to stderr "Received a bad result: :("
+/// ```
 pub fn unwrap_or_stderr<T, E>(burrito: Result<T, E>, msg: &str) -> T
         where E: std::fmt::Display {
     burrito.unwrap_or_else( |err| {
