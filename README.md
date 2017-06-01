@@ -179,7 +179,24 @@ workflow:
 
 
 
+//////////////////////////////////////////////////////////////
 
+launcher
+- move functions in lib.rs into their own modules
+- add inline documentation to all functions
+- build multiple eg config.json files
+	> build requirement logic
+		> how to poll the OS for peripheral presence
+		> how to poll for network connectivity
+	> handling for failing config requirements
+
+updater
+- how to build a list of all games & paths
+- 
+
+chooser
+- access to list of games & paths (from updater)
+- return a path to the game-dir
 
 
 
