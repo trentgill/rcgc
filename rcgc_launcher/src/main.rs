@@ -38,9 +38,9 @@ fn main() {
         shell_args.path
     );
     let output = Command::new("sh")
-            .arg("-c")
-            .arg(launch_cmd)
-            .output()
-            .expect("Unable to execute shell command");
+        .arg("-c")
+        .arg(launch_cmd)
+        .output()
+        .expect("Unable to execute shell command");
     println!("{}", String::from_utf8_lossy(&output.stdout));
 }
