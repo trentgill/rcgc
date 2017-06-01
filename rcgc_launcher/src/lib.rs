@@ -4,6 +4,7 @@ use std::error::Error;
 use std::fs::File;
 use std::io::prelude::*;
 use json::JsonValue;
+use std::process;
 
 mod parse_json;
 
@@ -31,4 +32,17 @@ pub fn path_to_json(path: &String) -> Result<JsonValue, Box<Error>> {
     file.read_to_string(&mut contents)?;
     let json = parse_json::parse_json(&contents)?;
     Ok(json)
+}
+
+pub fn unwrap_or_stderr<T, E>(burrito: Result<T, E>, msg: &str) -> T
+        where E: std::fmt::Display {
+    burrito.unwrap_or_else( |err| {
+        writeln!(
+            std::io::stderr(),
+            "{}: {}",
+            msg,
+            err
+            ).expect("Unable to write to stderr");
+        process::exit(1);
+    })
 }
