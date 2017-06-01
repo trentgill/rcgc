@@ -8,19 +8,19 @@ use std::process;
 
 mod parse_json;
 
-pub struct Config {
+pub struct ShellArgs {
     pub path: String,
 }
 
-impl Config {
-    pub fn new(args: &[String]) -> Result<Config, &'static str> {
+impl ShellArgs {
+    pub fn new(args: &[String]) -> Result<ShellArgs, &'static str> {
         if args.len() != 2 {
             return Err("wrong number of arguments");
         }
         let path = 
             if args[1].chars().last() == Some('/') {args[1].clone()}
             else {format!("{}/", &args[1])};
-        Ok(Config {
+        Ok(ShellArgs {
             path: path,
         })
     }
