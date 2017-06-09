@@ -29,11 +29,12 @@ fn main() {
         .as_str().unwrap_or("");
     let engine_cmd = available_engines[selected_engine]
         .as_str().unwrap_or("");
-        
+    
+    rcgc_launcher::check_peripherals(&config);
     //eg: how to run a formatted shell command in a sub-terminal
     //println!("Argument: {}", shell_args.path);
     let launch_cmd = format!(
-        "{} {}",
+        "echo '{} {}'",
         engine_cmd,
         shell_args.path
     );
@@ -42,5 +43,5 @@ fn main() {
         .arg(launch_cmd)
         .output()
         .expect("Unable to execute shell command");
-    println!("{}", String::from_utf8_lossy(&output.stdout));
+    println!("output: {}", String::from_utf8_lossy(&output.stdout));
 }
