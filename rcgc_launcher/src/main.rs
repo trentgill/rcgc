@@ -44,7 +44,7 @@ fn main() {
             let web_cmd = format!("chromium-browser --app={}", url);
             let web_cmd_bytes = web_cmd.into_bytes();
             let mut xinitrc = unwrap_or_stderr(
-                File::create("~/.xinitrc"),
+                File::create("/home/pi/.xinitrc"),
                 "Unable to create ~/.xinitrc"
             );
             unwrap_or_stderr(
@@ -53,13 +53,17 @@ fn main() {
             );
             xinitrc.sync_all().unwrap();
 
-            Command::new("startx")
-                .output()
+            let mut startx = Command::new("startx")
+                .spawn()
                 .expect("Unable to startx");
-            Command::new("rm")
-                .arg("~/.xinitrc")
-                .output()
+            let startx_status = startx.wait().expect("failed to wait on startx");
+            println!("startx status: {:?}", startx_status);
+            let mut rm = Command::new("rm")
+                .arg("/home/pi/.xinitrc")
+                .spawn()
                 .expect("Unable to rm ~/.xinitrc");
+            let rm_status = rm.wait().expect("failed to wait on rm");
+            println!("rm status: {:?}", rm_status);
         }
         _ => {
             let launch_cmd = format!(
