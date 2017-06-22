@@ -74,3 +74,18 @@ network={
 9. `sudo apt-get upgrade`
 
 TODO: create a new user with sudo privileges and delete the default user.
+
+Boot quietly:
+`sudo cp /etc/systemd/system/getty.target.wants/getty@tty{1,3}.service`
+`sudo nano /etc/systemd/system/getty.target.wants/getty@tty3.service` and change `DefaultInstance=tty1` to `DefaultInstance=tty3`
+`sudo nano /boot/cmdline.txt` and make it look like this:
+```
+dwc_otg.lpm_enable=0 console=serial0,115200 console=tty3 loglevel=0 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait logo.nologo quiet splash
+```
+
+Run the launcher on the chooser at boot:
+Add the following to `/etc/rc.local`, above `exit 0` and below everything else:
+```
+/home/pi/rcgc/rcgc_launcher /home/pi/rcgc/rcgc_chooser/
+```
+(change these to the correct path to the `rcgc_launcher` binary and the `rcgc_chooser` directory)
