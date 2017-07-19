@@ -65,6 +65,35 @@ fn main() {
             let rm_status = rm.wait().expect("failed to wait on rm");
             println!("rm status: {:?}", rm_status);
         }
+        "Love2D" => {
+            let launch_cmd = format!(
+                "{} {}",
+                engine_cmd,
+                shell_args.path
+            ).into_bytes();
+
+            let mut xinitrc = unwrap_or_stderr(
+                File::create("/home/pi/.xinitrc"),
+                "Unable to create ~/.xinitrc"
+            );
+            unwrap_or_stderr(
+                xinitrc.write_all(&launch_cmd),
+                "Unable to write to ~/.xinitrc"
+            );
+            xinitrc.sync_all().unwrap();
+
+            let mut startx = Command::new("startx")
+                .spawn()
+                .expect("Unable to startx");
+            let startx_status = startx.wait().expect("failed to wait on startx");
+            println!("startx status: {:?}", startx_status);
+            // let mut rm = Command::new("rm")
+            //     .arg("/home/pi/.xinitrc")
+            //     .spawn()
+            //     .expect("Unable to rm ~/.xinitrc");
+            // let rm_status = rm.wait().expect("failed to wait on rm");
+            // println!("rm status: {:?}", rm_status);
+        }
         _ => {
             let launch_cmd = format!(
                 "'{} {}'",
